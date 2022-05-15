@@ -1,40 +1,37 @@
 document.querySelectorAll(".padraoQuadrante").forEach((item)=>{
     item.addEventListener("click",()=>{
-        marcar(item.getAttribute("id"));
+        marcar(item.getAttribute("id"),item);
     });
 });
 
 let vez = 1;
-let cont = 0;
 let arr = [0,0,0,0,0,0,0,0,0];
-const marcar = (pos) => {
+const marcar = (pos, item) => {
     if(verificaGanhador() == 3 && !verificaVelha()){
         if(verificaPosicao(pos-1)){
             //marrcar aqq
             arr[pos-1] = vez;
             if(vez == 1) {
                 vez = 2;
+                item.innerHTML = "&#10060;"
             } else {
                 vez = 1;
+                item.innerHTML = "&#11093;"
             }
             if(verificaGanhador() == 1) {
                 console.log("X ganhou");
+                document.querySelector(".resultado").innerHTML = "Jogador 1 (&#10060;) ganhou";
             } else if(verificaGanhador() == 2) {
-                console.log("O Ganhou");
+                document.querySelector(".resultado").innerHTML = "Jogador 2 (&#11093;) ganhou";
             } else if(verificaVelha()) {
-                console.log("Deu velha.");
             }
         }
     } else if(verificaGanhador() == 1) {
-        console.log("X ganhou");
+        document.querySelector(".resultado").innerHTML = "Jogador 1 (&#10060;) ganhou";
     } else if(verificaGanhador() == 2) {
-        console.log("O Ganhou");
+        document.querySelector(".resultado").innerHTML = "Jogador 2 (&#11093;) ganhou";
     } else if(verificaVelha()) {
-        console.log("Deu velha.");
     }
-    console.log("Vez do: "+vez +" Marca na posição: "+(pos-1));
-    
-    cont++
 }
 
 const verificaVelha = ()=> {
@@ -42,6 +39,7 @@ const verificaVelha = ()=> {
         return false;
     } else {
         return true;
+        document.querySelector(".resultado").innerHTML = "Deu velha &#128117;";
     }
 }
 const verificaPosicao = (pos)=> {
@@ -88,3 +86,14 @@ const verificaGanhador = ()=>{
         return 3;
     }
 }
+
+const reiniciarJogo = ()=> {
+    vez = 1;
+    arr = [0,0,0,0,0,0,0,0,0];
+    document.querySelectorAll(".padraoQuadrante").forEach((item)=>{
+        item.innerHTML = "";
+    });
+    document.querySelector(".resultado").innerHTML = "";
+}
+
+document.querySelector("button").addEventListener("click",reiniciarJogo);
