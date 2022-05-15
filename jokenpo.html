@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styleJokenpo.css">
+    <title>Jokenpô</title>
+</head>
+<body>
+    <div class="container">
+        <div class="pedra">
+            &#9994;<input type="radio" hidden name="jokenpo" id="pedra" value="1">
+        </div>
+        <div class="papel">
+            &#9995;<input type="radio" hidden name="jokenpo" id="papel" value="2">
+        </div>
+        <div class="tesoura">
+            &#9996;<input type="radio" hidden name="jokenpo" id="tesoura" value="3">
+        </div>
+    </div>
+    <div class="areaResultados">
+        <button id="jogar">Jogar</button>
+        
+        <div id="resultado"></div>
+        <div id="resultadoGeral"></div>
+        <a href="index.html" class="voltar">Voltar</a>
+        <script src="assets/js/jokenpo.js"></script>
+    </div>
+</body>
+</html>

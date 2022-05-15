@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Bebas Neue', cursive;
+}
+body  {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+}
+.container {
+    display: flex;
+}
+.pedra, .tesoura, .papel {
+    width: 200px;
+    height: 200px;
+    font-size: 150px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.pedra img, .tesoura img, .papel img {
+    width: 100%;
+}
+.checkRadio {
+    background-color: rgb(197, 197, 255);
+}
+.pedra:hover, .tesoura:hover, .papel:hover {
+    background-color: rgb(197, 197, 255);
+}
+.areaResultados {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+button {
+    padding: 40px;
+    border:0;
+    background-color: rgb(126, 126, 255);
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+button:hover {
+    background-color: rgb(197, 197, 255);
+}
+.areaResultados div {
+    font-size: 30px;
+}
+.resultadoGeral {
+    margin-bottom: 10px;
+}
+a {
+    text-decoration: none;
+}
