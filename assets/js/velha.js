@@ -4,19 +4,22 @@ document.querySelectorAll(".padraoQuadrante").forEach((item)=>{
     });
 });
 
-let vez = 1;
 let arr = [0,0,0,0,0,0,0,0,0];
 const marcar = (pos, item) => {
     if(verificaGanhador() == 3 && !verificaVelha()){
         if(verificaPosicao(pos-1)){
             //marrcar aqq
-            arr[pos-1] = vez;
-            if(vez == 1) {
-                vez = 2;
-                item.innerHTML = "&#10060;"
-            } else {
-                vez = 1;
-                item.innerHTML = "&#11093;"
+            arr[pos-1] = 1;
+            item.innerHTML = "&#10060;"
+            let continuar = true;
+            while(continuar){
+                let posAleatoria = Math.floor(Math.random()*9);
+                if(arr[posAleatoria] == 0) {
+                    arr[posAleatoria] = 2;
+                    continuar = false;
+                    let quadrante = ".quadrante"+(posAleatoria+1);
+                    document.querySelector(quadrante).innerHTML = "&#11093;";
+                }
             }
             if(verificaGanhador() == 1) {
                 console.log("X ganhou");
@@ -24,6 +27,7 @@ const marcar = (pos, item) => {
             } else if(verificaGanhador() == 2) {
                 document.querySelector(".resultado").innerHTML = "Jogador 2 (&#11093;) ganhou";
             } else if(verificaVelha()) {
+                document.querySelector(".resultado").innerHTML = "Deu velha &#128117;";
             }
         }
     } else if(verificaGanhador() == 1) {
@@ -31,6 +35,7 @@ const marcar = (pos, item) => {
     } else if(verificaGanhador() == 2) {
         document.querySelector(".resultado").innerHTML = "Jogador 2 (&#11093;) ganhou";
     } else if(verificaVelha()) {
+        document.querySelector(".resultado").innerHTML = "Deu velha &#128117;";
     }
 }
 
@@ -39,7 +44,6 @@ const verificaVelha = ()=> {
         return false;
     } else {
         return true;
-        document.querySelector(".resultado").innerHTML = "Deu velha &#128117;";
     }
 }
 const verificaPosicao = (pos)=> {
