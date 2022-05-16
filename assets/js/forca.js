@@ -16,16 +16,33 @@ document.querySelector("#novoJogo").addEventListener("click",()=>{
         item.setAttribute("data-pos",i);
         document.querySelector(".letras").appendChild(item);
     }
-    // console.log(palavra.length);
-    // console.log("A palavra é: "+palavra);
+    document.querySelector("#letraTentada").focus();
 });
 const limpar = ()=> {
+    document.querySelector(".letras").innerHTML = "";
+    document.getElementById("letraTentada").classList.remove("esconder");
+    document.getElementById("tentarLetra").classList.remove("esconder");
+    document.querySelector(".winner").classList.add("esconder");
+    document.querySelector(".looser").classList.add("esconder");
+    document.querySelector(".cabeca").classList.add("esconder");
+    document.querySelector(".corpo").classList.add("esconder");
+    document.querySelector(".braco-esquerdo").classList.add("esconder");
+    document.querySelector(".braco-direito").classList.add("esconder");
+    document.querySelector(".perna-esquerda").classList.add("esconder");
+    document.querySelector(".perna-direita").classList.add("esconder");
+
+    document.querySelector(".eOlho1").classList.add("esconder");
+    document.querySelector(".eOlho2").classList.add("esconder");
+    document.querySelector(".dOlho1").classList.add("esconder");
+    document.querySelector(".dOlho2").classList.add("esconder");
 
 }
 
 document.querySelector("form").addEventListener("submit",(e)=>{
     e.preventDefault();
-    if(!ganhou() && !perdeu()){
+    document.querySelector(".beUsed").classList.add("esconder");
+    let letraTmp = document.querySelector("#letraTentada").value.toUpperCase();
+    if(!ganhou() && !perdeu() && letraTmp != ""){
         let continuar = true;
         let palavraTmp = palavra;
         let letraTmp = document.querySelector("#letraTentada").value.toUpperCase();
@@ -35,7 +52,6 @@ document.querySelector("form").addEventListener("submit",(e)=>{
             if(palavraTmp.indexOf(letraTmp) == -1) {
                 errosCom++;
                 document.querySelector(".parte.esconder").classList.remove("esconder");
-                console.log("Entra toda vez? "+palavraTmp.indexOf(letraTmp));
             }
             while(continuar){
                 if(palavraTmp.indexOf(letraTmp) != -1){
@@ -48,26 +64,36 @@ document.querySelector("form").addEventListener("submit",(e)=>{
                 }
             }
             if (ganhou()){
-                console.log("Ganhou!");
-                document.getElementById("letraTentada").setAttribute("disabled","yes");
-                document.getElementById("tentarLetra").setAttribute("hidden","yes");
+                document.querySelector(".winner").classList.remove("esconder");
+                document.getElementById("letraTentada").classList.add("esconder");
+                document.getElementById("tentarLetra").classList.add("esconder");
             } else if (perdeu()){
-                console.log("Perdeu!");
-                document.getElementById("letraTentada").setAttribute("disabled","yes");
-                document.getElementById("tentarLetra").setAttribute("hidden","yes");
+                document.querySelector(".looser").classList.remove("esconder");
+                document.querySelector(".eOlho1").classList.remove("esconder");
+                document.querySelector(".eOlho2").classList.remove("esconder");
+                document.querySelector(".dOlho1").classList.remove("esconder");
+                document.querySelector(".dOlho2").classList.remove("esconder");
+                document.getElementById("letraTentada").classList.add("esconder");
+                document.getElementById("tentarLetra").classList.add("esconder");
             }
         } else {
-            console.log("Letra já usada");
+            document.querySelector(".beUsed").classList.remove("esconder");
         }
     } else if (ganhou()){
-        console.log("Ganhou!");
-        document.getElementById("letraTentada").setAttribute("disabled","yes");
-        document.getElementById("tentarLetra").setAttribute("hidden","yes");
+        document.querySelector(".winner").classList.remove("esconder");
+        document.getElementById("letraTentada").classList.add("esconder");
+        document.getElementById("tentarLetra").classList.add("esconder");
     } else if (perdeu()){
-        console.log("Perdeu!");
-        document.getElementById("letraTentada").setAttribute("disabled","yes");
-        document.getElementById("tentarLetra").setAttribute("hidden","yes");
+        document.querySelector(".looser").classList.remove("esconder");
+        document.querySelector(".eOlho1").classList.remove("esconder");
+        document.querySelector(".eOlho2").classList.remove("esconder");
+        document.querySelector(".dOlho1").classList.remove("esconder");
+        document.querySelector(".dOlho2").classList.remove("esconder");
+        document.getElementById("letraTentada").classList.add("esconder");
+        document.getElementById("tentarLetra").classList.add("esconder");
     }
+    document.querySelector("#letraTentada").value = "";
+    document.querySelector("#letraTentada").focus();
 });
 
 const ganhou = ()=> {

@@ -20,21 +20,41 @@
                 <line x1="240" y1="180" x2="280" y2="200" style="stroke:rgb(0,0,0);stroke-width:4" class="braco-direito parte esconder" />
                 <line x1="240" y1="220" x2="220" y2="260" style="stroke:rgb(0,0,0);stroke-width:4" class="perna-esquerda parte esconder" />
                 <line x1="240" y1="220" x2="260" y2="260" style="stroke:rgb(0,0,0);stroke-width:4" class="perna-direita parte esconder" />
-              </svg>
+                
+
+
+                <line x1="250" y1="105" x2="260" y2="125" style="stroke:rgb(255,0,0);stroke-width:4" class="eOlho1 esconder" />
+                <line x1="260" y1="105" x2="250" y2="125" style="stroke:rgb(255,0,0);stroke-width:4" class="eOlho2 esconder" />
+                <line x1="220" y1="105" x2="230" y2="125" style="stroke:rgb(255,0,0);stroke-width:4" class="dOlho1 esconder" />
+                <line x1="230" y1="105" x2="220" y2="125" style="stroke:rgb(255,0,0);stroke-width:4" class="dOlho2 esconder" />
+            </svg>
         </div>
         <div class="areaLetras">
+            <div class="modelLetra esconder">
+                <svg width="55" height="5">
+                    <rect width="55" height="5" style="fill:none;stroke-width:10;stroke:rgb(0,0,0)" />
+                </svg>
+            </div>
+            <div class="tema">Tema: Animais</div>    
             <div class="letras">
-                <div class="modelLetra esconder">
-                    <svg width="55" height="5">
-                        <rect width="55" height="5" style="fill:none;stroke-width:10;stroke:rgb(0,0,0)" />
-                    </svg>
-                </div>    
+
             </div>
             <div class="digite">
                 <form>
                     <input type="text" id="letraTentada" maxlength="1">
                     <input type="submit" id="tentarLetra" value="go">
                 </form>
+            </div>
+            <div class="avisos">
+                <div class="winner esconder">
+                    Parabéns você acertou!
+                </div>
+                <div class="looser esconder">
+                    Que pena, vida=false
+                </div>
+                <div class="beUsed esconder">
+                    Letra já utilizada
+                </div>
             </div>
         </div>
     </div>

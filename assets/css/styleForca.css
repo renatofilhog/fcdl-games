@@ -25,7 +25,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+}
+.tema {
+    margin-bottom: 80px;
 }
 .forca {
     width: 100%;
@@ -75,19 +77,15 @@ body {
 #tentarLetra:hover {
     background-color: rgb(197, 197, 255);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
+.winner{
+    color:#007100;
+}
+.looser {
+    color: #f57474;
+}
+.beUsed {
+    font-size: 30px;
+}
 button {
     padding: 25px;
     border:0;
