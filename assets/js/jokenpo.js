@@ -1,13 +1,22 @@
+// Ação de clique botão Jogar
 document.getElementById("jogar").addEventListener("click",()=>{
+    // Checagem para ver se foi selecionado alguma opção
     if(document.querySelector("input[name=jokenpo]:checked") == null){
         alert("Selecione uma opção para jogar");
     } else {
+        /*
+        *  Armazenando as opções escolhidas e fazendo o sorteio. 
+        *  Encaminhamento para uma função que verifica o ganhador
+        */
         let opcaoEscolhida = document.querySelector("input[name=jokenpo]:checked").value;
         let opcaoComputador = Math.floor(Math.random() * 3)+1;
         document.getElementById("resultado").innerHTML = "A Máquina escolheu: "+toText(opcaoComputador);
         document.getElementById("resultadoGeral").innerHTML = toWin(opcaoEscolhida,opcaoComputador);
     }    
 });
+/*
+*   Função para checar ganhador
+*/
 const toWin = (opcao1, opcao2)=>{
     if(opcao1 == opcao2) {
         return "Empate!";
@@ -27,6 +36,7 @@ const toWin = (opcao1, opcao2)=>{
         return "Você perdeu :( (Papel perde para Tesoura)";
     }
 };
+// Transformando opção escolhida em texto para apresentação ao usuário
 const toText = (opcao) => {
     switch(opcao){
         case 1:
@@ -43,6 +53,9 @@ const toText = (opcao) => {
     }
 };
 
+/*
+*   Parte visual onde ao selecionanr um, ele inclui a classe que faz o estilo quando selecionado.
+*/
 document.querySelector(".pedra").addEventListener("click",()=>{
     document.querySelector("#pedra").checked = true;
     trocaClass(document.querySelector(".pedra"));
