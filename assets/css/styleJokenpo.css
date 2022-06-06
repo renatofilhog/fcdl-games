@@ -63,3 +63,9 @@ button:hover {
 a {
     text-decoration: none;
 }
+#placar {
+    margin-top: 30px;
+    min-width: 430px;
+    display: flex;
+    justify-content: space-between;
+}
