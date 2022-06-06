@@ -9,7 +9,8 @@ document.querySelectorAll(".padraoQuadrante").forEach((item)=>{
 });
 // Array para definir as posições do jogo da velha
 let arr = [0,0,0,0,0,0,0,0,0];
-
+// Define de quem é a VEZ. 1=x e 2=o
+let vez = 1
 /**
  * Função onde após identificado clique no quadrante, a mesma se
  * encarrega de fazer a marcação visual e inserção da posição no array
@@ -17,20 +18,19 @@ let arr = [0,0,0,0,0,0,0,0,0];
 const marcar = (pos, item) => {
     if(verificaGanhador() == 3 && !verificaVelha()){
         if(verificaPosicao(pos-1)){
-            // pos-1 pois no html está como quadrante de 1 a 9, e o array é de 0 a 8
-            arr[pos-1] = 1;
-            // Emoticon de X html
-            item.innerHTML = "&#10060;"
-            // Temos um laço de repetição com flag pois ele irá procurar uma posição vazia no array para colocar a vez do O
-            let continuar = true;
-            while(continuar){
-                let posAleatoria = Math.floor(Math.random()*9);
-                if(arr[posAleatoria] == 0) {
-                    arr[posAleatoria] = 2;
-                    continuar = false;
-                    let quadrante = ".quadrante"+(posAleatoria+1);
-                    document.querySelector(quadrante).innerHTML = "&#11093;";
-                }
+            
+            if(vez == 1){
+                // Emoticon de X html
+                item.innerHTML = "&#10060;"
+                vez = 2
+                // pos-1 pois no html está como quadrante de 1 a 9, e o array é de 0 a 8
+                arr[pos-1] = 1;
+            } else {
+                // Emoticon de O html
+                item.innerHTML = "&#11093;"
+                vez = 1
+                // pos-1 pois no html está como quadrante de 1 a 9, e o array é de 0 a 8
+                arr[pos-1] = 2;
             }
             /**
              * Ao fim de cada jogada é verificado o ganhador ou se deu empate (velha)
